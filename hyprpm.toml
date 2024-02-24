@@ -1,0 +1,8 @@
+[Repository]
+name = "HyprHarpoon"
+description = "Finshing for windows made easy"
+autors = ["PaideiaDilemma"]
+output = "hyprharpoon.so"
+build = [
+  "make all"
+]

@@ -1,0 +1,7 @@
+build
+compile_commands.json
+Hyprland
+hyprharpoon.so
+.cache
+.envrc
+.direnv
