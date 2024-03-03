@@ -13,8 +13,8 @@
 
 CHarpoonIndicators::CHarpoonIndicators(CWindow* pWindow, const std::vector<std::string>& identifiers) :
     IHyprWindowDecoration(pWindow), m_pWindow(pWindow), m_eLayer(DECORATION_LAYER_UNDER) {
-    m_vLastWindowPos  = pWindow->m_vRealPosition.vec();
-    m_vLastWindowSize = pWindow->m_vRealSize.vec();
+    m_vLastWindowPos  = pWindow->m_vRealPosition.value();
+    m_vLastWindowSize = pWindow->m_vRealSize.value();
 
     for (const auto& identifier : identifiers) {
         m_indicators.push_back(SHarpoonIndicator{identifier});
@@ -88,7 +88,7 @@ void CHarpoonIndicators::draw(CMonitor* pMonitor, float a, const Vector2D& offse
     const auto scaledMargin = **PMARGIN * scale;
 
     const auto PWORKSPACE      = g_pCompositor->getWorkspaceByID(m_pWindow->m_iWorkspaceID);
-    const auto WORKSPACEOFFSET = PWORKSPACE && !m_pWindow->m_bPinned ? PWORKSPACE->m_vRenderOffset.vec() : Vector2D();
+    const auto WORKSPACEOFFSET = PWORKSPACE && !m_pWindow->m_bPinned ? PWORKSPACE->m_vRenderOffset.value() : Vector2D();
 
     const auto rounding = **PROUNDIND == 0 ? 0 : **PROUNDIND * scale;
 
@@ -178,8 +178,8 @@ eDecorationType CHarpoonIndicators::getDecorationType() {
 }
 
 void CHarpoonIndicators::updateWindow(CWindow* pWindow) {
-    m_vLastWindowPos  = pWindow->m_vRealPosition.vec();
-    m_vLastWindowSize = pWindow->m_vRealSize.vec();
+    m_vLastWindowPos  = pWindow->m_vRealPosition.value();
+    m_vLastWindowSize = pWindow->m_vRealSize.value();
 
     damageEntire();
 }
