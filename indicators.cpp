@@ -87,7 +87,7 @@ void CHarpoonIndicators::draw(CMonitor* pMonitor, float a, const Vector2D& offse
 
     const auto scaledMargin = **PMARGIN * scale;
 
-    const auto PWORKSPACE      = g_pCompositor->getWorkspaceByID(m_pWindow->m_iWorkspaceID);
+    const auto PWORKSPACE      = m_pWindow->m_pWorkspace;
     const auto WORKSPACEOFFSET = PWORKSPACE && !m_pWindow->m_bPinned ? PWORKSPACE->m_vRenderOffset.value() : Vector2D();
 
     const auto rounding = **PROUNDIND == 0 ? 0 : **PROUNDIND * scale;
