@@ -55,7 +55,7 @@ std::string CHarpoonIndicators::getDisplayName() {
     return "Harpoon Indicator";
 }
 
-void CHarpoonIndicators::draw(CMonitor* pMonitor, float a, const Vector2D& offset) {
+void CHarpoonIndicators::draw(CMonitor* pMonitor, float a) {
     if (!g_pCompositor->windowValidMapped(m_pWindow))
         return;
 
@@ -106,7 +106,7 @@ void CHarpoonIndicators::draw(CMonitor* pMonitor, float a, const Vector2D& offse
 
         identifierBox.translate({0, m_vLastWindowSize.y - scaledHeight / 1.3}); // TODO: configurable ratio or pixels
 
-        identifierBox.translate(offset - pMonitor->vecPosition + WORKSPACEOFFSET);
+        identifierBox.translate(m_pWindow->m_vFloatingOffset - pMonitor->vecPosition + WORKSPACEOFFSET);
 
         x += scaledWidth + scaledMargin;
 
